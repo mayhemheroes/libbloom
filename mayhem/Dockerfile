@@ -7,5 +7,5 @@ ADD . /libbloom
 WORKDIR /libbloom
 RUN make test
 
-CMD ["/libbloom/build/test-libbloom", "100000", "1000000", "50000", "0.1"]
+#CMD ["/libbloom/build/test-libbloom", "100000", "1000000", "50000", "0.1"]
 
