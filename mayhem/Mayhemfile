@@ -1,7 +1,6 @@
 project: libbloom
 target: libbloom-test
-testsuite:
-  - file://mayhem/testsuite/corpus
 
 cmds:
-  - cmd: /build/test-libbloom -G @@
+  - cmd: /build/test-libbloom -G 100000 1000000 50000 0.1
+
