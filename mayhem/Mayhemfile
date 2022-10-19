@@ -1,0 +1,7 @@
+project: libbloom
+target: libbloom-test
+testsuite:
+  - file://mayhem/testsuite/corpus
+
+cmds:
+  - cmd: /build/test-libbloom -G @@
