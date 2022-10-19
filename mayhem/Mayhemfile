@@ -1,6 +1,8 @@
 project: libbloom
 target: libbloom-test
+testsuite:
+  - file://libbloom/mayhem/testsuite/incrementer
 
 cmds:
-  - cmd: /libbloom/build/test-libbloom -G 1000 1000 500 0.1
+  - cmd: /libbloom/build/test-libbloom -G 1000 1000 500 @@
 
