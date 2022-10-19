@@ -2,6 +2,6 @@ project: libbloom
 target: libbloom-test
 
 cmds:
-  - cmd: /libbloom/build/test-libbloom 100000 1000000 50000 0.1
+  - cmd: /libbloom/build/test-libbloom -G 100000 1000000 50000 0.1
 
 
