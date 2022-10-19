@@ -6,12 +6,12 @@ RUN apt-get update && \
         
 ADD . /libbloom
 WORKDIR /libbloom
-RUN make
+RUN make all
 
 #RUN clang-12 -lm -ldl -fsanitize=fuzzer,address mayhem/fuzzer.c -o mayhem/libbloom-fuzzer build/libbloom.so.2.0
 #/lib/x86_64-linux-gnu/libm.so.6
-ENV LIBRARY_PATH=/lib/x86_64-linux-gnu/
-RUN clang-12 -lm -ldl -fsanitize=fuzzer,address mayhem/fuzzer.c -o mayhem/libbloom-fuzzer build/libbloom.so.2  -v
+#ENV LIBRARY_PATH=/lib/x86_64-linux-gnu/
+#RUN clang-12 -lm -ldl -fsanitize=fuzzer,address mayhem/fuzzer.c -o mayhem/libbloom-fuzzer build/libbloom.so.2  -v
 
 #FROM --platform=linux/amd64 ubuntu:20.04
 
