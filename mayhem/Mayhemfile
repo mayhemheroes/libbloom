@@ -3,3 +3,4 @@ target: libbloom-test
 
 cmds:
   - cmd: /libbloom/build/test-basic-fuzz
+    libfuzzer: true
