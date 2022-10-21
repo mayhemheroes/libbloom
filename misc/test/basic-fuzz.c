@@ -26,17 +26,29 @@
 
 int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
+  printf("Entering...\n");
   struct bloom bloom;
-  bloom_init2(&bloom, *Data, 0.01);
-  bloom_add(&bloom, *Data, 1);
-  if (bloom.ready == 1) {
-    bloom_print(&bloom);
+
+  uint8_t n;  
+  uint8_t copy[Size];
+  memcpy(copy, Data, Size); // make a non-const copy of the fuzz data
+  
+  bloom_init2(&bloom, copy[0], 0.01);
+  
+  for (n = 1; n < (uint8_t) 1000; n++) {
+    bloom_add(&bloom, &n, sizeof(uint8_t));
   }
+  
+  //bloom_add(&bloom, copy, sizeof(uint8_t));
+  
+ 
+  
 
-  //if (bloom_check(&bloom, buffer, buflen)) {
-    //printf("It may be there!\n");
-  //}
+  if (bloom_check(&bloom, Data, Size)) { 
+    bloom_print(&bloom);
+    printf("It may be there!\n");
+  }
   bloom_free(&bloom);
-
+  printf("Done!\n");
   return 0;
 }
