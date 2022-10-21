@@ -27,7 +27,16 @@
 int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
   struct bloom bloom;
+  bloom_init2(&bloom, *Data, 0.01);
+  //bloom_add(&bloom, buffer, buflen);
+  //if (bloom.ready == 1) {
+    //bloom_print(&bloom);
+  //}
 
+  //if (bloom_check(&bloom, buffer, buflen)) {
+    //printf("It may be there!\n");
+  //}
+  bloom_free(&bloom);
 
   return 0;
 }
