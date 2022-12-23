@@ -108,6 +108,10 @@ $(BINDIR)/test-perf: $(TESTDIR)/perf.c $(BINDIR)/$(SO_VERSIONED)
 $(BINDIR)/test-basic: $(TESTDIR)/basic.c $(BINDIR)/libbloom.a
 	$(CC) $(CFLAGS) $(OPT) $(INC) $(TESTDIR)/basic.c \
 	    $(BINDIR)/libbloom.a $(LIB) -o $(BINDIR)/test-basic
+	    
+$(BINDIR)/test-basic-fuzz: $(TESTDIR)/basic-fuzz.c $(BINDIR)/libbloom.a
+	$(CC) $(CFLAGS) $(OPT) $(INC) $(TESTDIR)/basic-fuzz.c \
+	    $(BINDIR)/libbloom.a $(LIB) -o $(BINDIR)/test-basic-fuzz
 
 $(BINDIR)/visualize: $(TESTDIR)/visualize.c $(BINDIR)/libbloom.a
 	$(CC) $(CFLAGS) $(OPT) $(INC) $(TESTDIR)/visualize.c \
@@ -125,9 +129,10 @@ $(BINDIR)/murmurhash2.o: murmur2/MurmurHash2.c murmur2/murmurhash2.h
 clean:
 	rm -rf $(BINDIR)
 
-test: $(BINDIR)/test-libbloom $(BINDIR)/test-basic
+test: $(BINDIR)/test-libbloom $(BINDIR)/test-basic $(BINDIR)/test-basic-fuzz
 	$(BINDIR)/test-basic
 	$(BINDIR)/test-libbloom
+	$(BINDIR)/test-basic-fuzz
 
 perf: $(BINDIR)/test-perf
 	$(BINDIR)/test-perf

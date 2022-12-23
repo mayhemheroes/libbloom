@@ -1,0 +1,6 @@
+project: libbloom
+target: libbloom-test
+
+cmds:
+  - cmd: /libbloom/mayhem/test-basic-fuzz
+    libfuzzer: true
